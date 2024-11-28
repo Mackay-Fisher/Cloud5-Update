@@ -1,0 +1,168 @@
+ 
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.nav{
+    z-index: 2;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color:black;
+    font-weight: 700;
+}
+
+.nav-items{
+    display: flex;
+    font-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    width: 100%;
+    justify-content: left;
+}
+
+.nav-items >li{
+    margin-left: clamp(10px,2%,40px);
+    margin-right: clamp(10px,2%,40px);
+    text-decoration: underline;
+    font-style: none;
+    width: fit-content;
+}
+
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.intro{
+    text-align: center;
+    position: relative;
+    top: clamp(10px,5vh,80px);
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    color: black;
+}
+
+.header{
+    font-size: clamp(10px,2vw,50px);
+    letter-spacing: clamp(.5px,.23vw,5px);
+    line-height: clamp(10px,2vw,50px);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+}
+
+.tagline{
+    font-size: clamp(5px,.9vw,25px);
+    letter-spacing: clamp(.1px,.2vw,2px);
+    line-height: clamp(6px,1.5vw,30px);
+    width: 45vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro{
+    height: 25vh;
+    padding: 5% 0% 0% 0%;
+}
+
+.personal{
+    position: relative;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.form{
+    margin-top: 0px;
+    padding: clamp(20px,4%,150px) clamp(20px,5%,150px);
+}
+
+.pho{
+    width: 326px;
+    height: 326px;
+    border: solid;
+    border-radius: 100%;
+}
+
+.im{
+    width: 530px;
+    height: 530px;
+    background-color: black;
+    border-radius: 100%;
+    border: solid 2px;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inf{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60vw;
+}
+
+.work{
+    position: relative;
+    top: -30px;
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.work > h1{
+    text-align: center;
+    text-decoration: underline;
+
+}
+
+
+.connet > h1{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.pd{
+    text-align: center;
+}
+
+
+.email{
+    font-size: 17px;
+}
+
+.navlink{
+    text-decoration: none;
+    color: white;
+    font-size: clamp(14px,2.2vw,40px);
+}
+
+.navlink:hover{
+    text-decoration: underline;
+}
+
+.con{
+    display: flex;
+    justify-content: space-around;
+}

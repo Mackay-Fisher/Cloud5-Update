@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Roboto&family=Roboto+Serif:ital@1&family=Source+Sans+3:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>GPT & Web Generation</title>
+    <style>
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: #111;
+            color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding:0% 4%;
+        }
+
+        h1, h2, p {
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease-out;
+        }
+
+        #content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        #content h1 {
+            font-size: 2.5rem;
+        }
+
+        #content h2 {
+            font-size: 1.8rem;
+        }
+
+        #content p {
+            font-size: 1rem;
+        }
+
+        #prompt-box {
+            background-color: #eee;
+            color: #111;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-top: 20px;
+            display: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #eee;
+            color: #111;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        #chat-interface {
+            display: none;  /* Hide chat initially */
+            max-width: 400px;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    
+        .message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease-out;
+        }
+    
+        .user {
+            background: #444;
+            text-align: left;
+        }
+    
+        .gpt {
+            background: #eee;
+            color: #111;
+            text-align: left;
+        }
+        #gpt-response > p{
+            color: #111;
+            font-size: 1rem;
+        }
+        .nav{
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background-color:white;
+            font-weight: 700;
+        }
+        
+        .nav-items{
+            display: flex;
+            font-style: none;
+            list-style-type: none;
+            text-decoration: none;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .nav-items >li{
+            margin-left: clamp(10px,2%,40px);
+            margin-right: clamp(10px,2%,40px);
+            text-decoration: none;
+            font-style: none;
+            width: fit-content;
+        }
+        .navlink{
+            text-decoration: none;
+            color: black;
+            font-size: clamp(8px,1.3vw,30px);
+        }
+        
+        .navlink:hover{
+            text-decoration: underline;
+            opacity: 50%;
+        }
+
+        #promptHistory {
+            position: absolute;
+            top: 40vw;
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #promptHistory ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        #promptHistory li {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #111;
+            color: #fff;
+        }
+        
+        #toggleButton {
+            background-color: #111;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        #toggleButton:hover {
+            background-color: #333;
+        }
+        .chatHistory {
+            list-style-type: none;
+            padding: 0;
+            max-width: 1000px;
+        }
+        
+        .userPrompt, .gptResponse {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .userPrompt {
+            background-color: #111;
+            color: #fff;
+            text-align: left;
+            padding: 5px;
+        }
+        
+        .gptResponse {
+            background-color: #eee;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul class="nav-items">
+            <li>
+                <a href="index.html" class="navlink">Home</a>
+            </li>
+            <li>
+                <a href="ProjectPage.html" class="navlink">Technical</a>
+            </li>
+            <li>
+                <a href="EmploymentPage.html" class="navlink">Qualifications</a>
+            </li>
+            <li>
+                <a href="ExtraPage.html" class="navlink">Service</a>
+            </li>
+            <li>
+                <a href="AboutmePage.html" class="navlink">AI</a>
+            </li>
+            <li>
+                <button onclick="toggleStylesheet()" class="buttonnav">Toggle Stylesheet</button>
+            </li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1>GPT & Web Generation</h1>
+        <h2>The Power of AI in Modern Web Design</h2>
+        <p>With GPT, the creation of website content, themes, and even structure becomes faster and more intuitive. Prompting GPT, like what's happening right now, can yield instantaneous designs.</p>
+        <button onclick="showPromptBox()">Learn How Prompting Works</button>
+
+        <button id="toggleButton">Show Prompts</button>
+
+
+
+        <div id="prompt-box">
+            <p>The process is simple. You provide GPT with a prompt, a small piece of text or question, and it responds with detailed content. It's like having an instantaneous conversation with an AI web designer. The more specific your prompt, the more tailored the response!</p>
+        </div>
+    </div>
+
+    <div id="promptHistory" style="display: none;">
+        <ul class="chatHistory">
+            <li class="userPrompt">Can you create me a very modern single page html website page where you explain how gpt can help generating websites and how the prompt process works I want it to model what I'm doing right now with you. Can you add javascript animations very modern css and stick to a black and white color scheme.</li>
+            <li class="userPrompt">
+                Could you generate an example text and iteration of a prompt run by gpt and show a response to really step it up a notch it can be something simple like how to center a div</li>
+            <li class="userPrompt">Can you make it so that when I click learn about gpt prompts it loads the question then loads the answer instead of having a separate box
+
+            </li>
+            <li class="userPrompt">Then part of the assignment is to talk about the prompts as well can you add a button that will hide and show the prompts I asked you to get to this finished project
+
+            </li>
+            
+            <!--... Add all your other prompts and responses here ...-->
+        </ul>
+    </div>
+
+    <div id="chat-interface">
+        <div class="message user" id="user-question">How can I center a div using CSS?</div>
+        <div class="message gpt" id="gpt-response">
+            To center a div both horizontally and vertically, you can use Flexbox. Here's a simple example:
+            <pre style="background-color: #f9f9f9; padding: 10px; border-radius: 4px; margin: 10px 0; overflow-x: auto;">
+    .parent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* or any specific height */
+    }
+    
+    .child {
+        /* This div will be centered inside .parent */
+    }
+            </pre>
+            Apply the "parent" class to the container and the "child" class to the div you want to center.
+    </div>
+
+
+
+    <!-- Place this section where you want the button and prompt history to appear -->
+
+
+
+
+    <script>
+        document.getElementById('toggleButton').addEventListener('click', function() {
+            var history = document.getElementById('promptHistory');
+            if (history.style.display === "none") {
+                history.style.display = "block";
+                this.innerHTML = "Hide Prompts";
+            } else {
+                history.style.display = "none";
+                this.innerHTML = "Show Prompts";
+            }
+        });        
+        function showPromptBox() {
+            const chatInterface = document.getElementById('chat-interface');
+            const userQuestion = document.getElementById('user-question');
+            const gptResponse = document.getElementById('gpt-response');
+    
+            chatInterface.style.display = 'block';  // Display the chat interface
+    
+            // Sequence animations
+            setTimeout(() => {
+                userQuestion.style.opacity = 1;
+                userQuestion.style.transform = 'translateY(0)';
+            }, 800);
+    
+            setTimeout(() => {
+                gptResponse.style.opacity = 1;
+                gptResponse.style.transform = 'translateY(0)';
+            }, 2000);
+        }
+        
+
+        window.onload = () => {
+            setTimeout(() => {
+                document.querySelector('h1').style.opacity = 1;
+                document.querySelector('h1').style.transform = 'translateY(0)';
+            }, 100);
+
+            setTimeout(() => {
+                document.querySelector('h2').style.opacity = 1;
+                document.querySelector('h2').style.transform = 'translateY(0)';
+            }, 300);
+
+            setTimeout(() => {
+                document.querySelector('p').style.opacity = 1;
+                document.querySelector('p').style.transform = 'translateY(0)';
+            }, 500);
+        }
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+

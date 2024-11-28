@@ -1,0 +1,72 @@
+.main{
+    padding: clamp(20px, 3%, 60px) clamp(15px, 2%, 40px); 
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: grey;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.nav{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color:white;
+    font-weight: 700;
+}
+
+.nav-items{
+    display: flex;
+    font-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    width: 100%;
+    justify-content: center;
+}
+
+.nav-items >li{
+    margin-left: clamp(10px,2%,40px);
+    margin-right: clamp(10px,2%,40px);
+    text-decoration: none;
+    font-style: none;
+    width: fit-content;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: clamp(8px,1.3vw,30px);
+}
+
+a:hover{
+    text-decoration: underline;
+    opacity: 50%;
+}
+
+.namehold{
+    text-align: center;
+    position: relative;
+    top: 5vh;
+}
+
+.name{
+    font-size: clamp(10px,2vw,50px);
+    letter-spacing: clamp(.5px,.06vw,5px);
+    line-height: clamp(10px,2vw,50px);
+    font-weight: 700;
+}
+
+.divider{
+    position: relative;
+    top: 6px;
+    height: 4px;
+    width: 3.2vw;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}

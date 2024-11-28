@@ -1,0 +1,202 @@
+.main{ 
+    padding: clamp(20px, 3%, 60px) clamp(15px, 2%, 40px); 
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Source Sans 3', sans-serif;
+    height: 200vh;
+}
+
+.nav{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color:white;
+    font-weight: 700;
+}
+
+
+.nav-items{
+    display: flex;
+    font-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    width: 100%;
+    justify-content: center;
+}
+
+.nav-items >li{
+    margin-left: clamp(10px,2%,40px);
+    margin-right: clamp(10px,2%,40px);
+    text-decoration: none;
+    font-style: none;
+    width: fit-content;
+}
+
+.navlink{
+    text-decoration: none;
+    color: black;
+    font-size: clamp(8px,1.3vw,30px);
+}
+
+.navlink:hover{
+    text-decoration: underline;
+    opacity: 50%;
+}
+
+
+.namehold{
+    text-align: center;
+    position: relative;
+    top: 9vh;
+}
+.namehold>p{
+    font-weight: 700;
+}
+.name{
+    font-size: clamp(10px,4vw,50px);
+    letter-spacing: clamp(.5px,.06vw,5px);
+    line-height: clamp(10px,2vw,50px);
+    font-weight: 700;
+}
+
+.divider{
+    position: relative;
+    top: 6px;
+    height: 4px;
+    width: 3.2vw;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divider.i{
+    margin-bottom: 40px;
+}
+
+.infohold{
+    padding: 2.3% 4%;
+    position: relative;
+    top: 30vh;
+    width: 40vw;
+}
+
+.skills{
+    padding: 2.3% 4%;
+    position: relative;
+    top: 5vh;
+    width: 30vw;
+}
+
+.title{
+    font-size: clamp(10px,1.6vw,40px);
+    letter-spacing: clamp(.5px,.06vw,5px);
+    line-height: clamp(10px,2vw,50px);
+    font-weight: 700;
+    width: 10vw;
+    
+}
+
+.servphoto{
+    width: 500px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+}
+
+.servicep{
+    border: solid;
+    padding: 3%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+}
+
+.servdesc{
+    margin-left: auto;
+    margin-right: auto;
+    width: 34vw;
+}
+
+.navlink{
+    text-decoration: none;
+    color: black;
+    font-size: clamp(8px,1.3vw,30px);
+}
+
+.navlink:hover{
+    text-decoration: underline;
+    opacity: 50%;
+}
+
+.projdescr{
+    width: 36vw;
+}
+
+.sertitle{
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.image{
+    width: 500px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.servflex{
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.navlink{
+    text-decoration: none;
+    color: white;
+    font-size: clamp(14px,2.2vw,40px);
+}
+
+.navlink:hover{
+    text-decoration: underline;
+}
+
+.nav{
+    z-index: 2;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color:black;
+    font-weight: 700;
+}
+
+.nav-items{
+    display: flex;
+    font-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    width: 100%;
+    justify-content: left;
+}
+
+.nav-items >li{
+    margin-left: clamp(10px,2%,40px);
+    margin-right: clamp(10px,2%,40px);
+    text-decoration: underline;
+    font-style: none;
+    width: fit-content;
+}
